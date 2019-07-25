@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=+, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+   
+  </head>
+  <body>
+
+<%- include("partials/navigation2") %>
+   
+       <div class="super_container_inner">
+           <div class="super_overlay"></div>
+   
+           <!-- Home -->
+           <div class="home">
+               <!-- Home Slider -->
+               <div class="home_slider_container">
+                   <div class="owl-carousel owl-theme home_slider">
+                       
+                       <!-- Slide -->
+                    <% images2.forEach(function(image) { %>
+					<div class="owl-item">
+                            <div class="background_image" style="background-image:url(images/principal.jpeg)"></div>
+                            <div class="container fill_height">
+                                <div class="row fill_height">
+                                    <div class="col fill_height">
+                                        <div class="home_container d-flex flex-column align-items-center justify-content-start">
+                                            <div class="home_content">
+                                                <div class="home_title">Nuevos Productos</div>
+                                                <div class="home_subtitle">¡No te los pierdas!</div>
+                                                <div class="home_items">
+                                                    <div class="row">
+                                                        <div class="col-sm-3 offset-lg-1">
+                                                            <div class="home_item_side"><img src="/images/hotSale.png" alt=""></a></div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-6 col-sm-8 offset-sm-2 offset-md-0">
+                                                            <div class="product home_item_large">
+                                                                <div class="product_tag d-flex flex-column align-items-center justify-content-center">
+                                                                    <div>
+                                                                        <div>Desde</div>
+                                                                        <div>$<%= image.precio %></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="product_image"><a href="/producto/detalle/<%= image._id %>"><img src="<%= image.path %>" height="240px" alt=""></a></div>  
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <div class="home_item_side"><a><img src="/images/paypal.png" alt=""></a></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>	
+                    </div>
+                    <% }) %>
+                   </div>
+                   <div class="home_slider_nav home_slider_nav_prev"><i class="fa fa-chevron-left" aria-hidden="true"></i></div>
+                   <div class="home_slider_nav home_slider_nav_next"><i class="fa fa-chevron-right" aria-hidden="true"></i></div>
+   
+                   <!-- Home Slider Dots -->
+                   
+                   <div class="home_slider_dots_container">
+                       <div class="container">
+                           <div class="row">
+                               <div class="col">
+                                   <div class="home_slider_dots">
+                                       <ul id="home_slider_custom_dots" class="home_slider_custom_dots d-flex flex-row align-items-center justify-content-center">
+                                           <li class="home_slider_custom_dot active">01</li>
+                                           <li class="home_slider_custom_dot">02</li>
+                                           <li class="home_slider_custom_dot">03</li>
+                                           <li class="home_slider_custom_dot">04</li>
+                                       </ul>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>	
+                   </div>
+   
+               </div>
+           </div>
+<!-- Products -->
+
+<div class="products">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="section_title text-center">Los mejores zapatos artesanales</div>
+                </div>
+            </div>
+            <div class="row page_nav_row">
+                <div class="col">
+                    <div class="page_nav">
+                        <ul class="d-flex flex-row align-items-start justify-content-center">
+                            <li class="active"><a href="category.html">Women</a></li>
+                            <li><a href="category.html">Men</a></li>
+                            <li><a href="category.html">Kids</a></li>
+                            <li><a href="category.html">Home Deco</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row products_row">
+                
+                <!-- Product -->
+                <% images.forEach(function(image) { %>
+                <div class="col-xl-4 col-md-6">
+                    <div class="product">
+                        <div class="product_image">
+                            <img src="<%= image.path %>" width="500px" height="200px" alt="" ></div>
+                        <div class="product_content">
+                            <div class="product_info d-flex flex-row align-items-start justify-content-start">
+                                <div>
+                                    <div>
+                                        <div class="product_name"><a href="/producto/detalle/<%= image._id %>"><%= image.nombre %></a></div>
+                                        <div class="product_category">Material: <%= image.descripcion %></div>
+                                    </div>
+                                </div>
+                                <div class="ml-auto text-right">                               
+                                    <div class="product_price text-right">$<%= image.precio %></div>
+                                </div>
+                            </div>
+                            <div class="product_buttons">
+                                <div class="text-right d-flex flex-row align-items-start justify-content-start">
+                                    <div class="product_button product_fav text-center d-flex flex-column align-items-center justify-content-center">
+                                        <div><div><a href="/producto/detalle/<%= image._id %>" ><img src="/images/ojo.svg" class="svg" alt=""></a><div>+</div></div></div>
+                                    </div>
+                                    <div class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
+                                        <% if(image.stock == 0){ %>
+                                            <p>Agotado</p>
+                                        <% } else{%>
+                                            <%if(session.zapatos) {%>
+                                            <%if(session.zapatos.totalItems == 10){%>
+                                            <p>Máxima cantidad alcanzada por envío</p>
+                                            <% } else{%>
+                                            <div><div><a href="/add/<%=image._id%>"><img src="/images/cart.svg" class="svg" alt=""></a><div>+</div></div></div>
+                                          <% }%>
+                                          <% } else{%>
+                                            <p>Necesita loguearse</p>
+                                            <% }%>
+                                        <% }%>
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <% }) %>
+            </div>
+            <div class="row load_more_row">
+                <div class="col">
+                    <div class="button load_more ml-auto mr-auto"><a href="#">load more</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+           <!-- Footer -->
+   
+               <div class="footer_bar">
+                   <div class="container">
+                       <div class="row">
+                           <div class="col">
+                               <div class="footer_bar_content d-flex flex-md-row flex-column align-items-center justify-content-start">
+                                   <div class="copyright order-md-1 order-2"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+   Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+   <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></div>
+                                   <nav class="footer_nav ml-md-auto order-md-2 order-1">
+                                       <ul class="d-flex flex-row align-items-center justify-content-start">
+                                           <li><a href="category.html">Women</a></li>
+                                           <li><a href="category.html">Men</a></li>
+                                           <li><a href="category.html">Kids</a></li>
+                                           <li><a href="category.html">Home Deco</a></li>
+                                           <li><a href="#">Contact</a></li>
+                                       </ul>
+                                   </nav>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           
+   </div>
+   
+   <script src="/js/jquery-3.2.1.min.js"></script>
+   <script src="/styles/bootstrap-4.1.2/popper.js"></script>
+   <script src="/styles/bootstrap-4.1.2/bootstrap.min.js"></script>
+   <script src="/plugins/greensock/TweenMax.min.js"></script>
+   <script src="/plugins/greensock/TimelineMax.min.js"></script>
+   <script src="/plugins/scrollmagic/ScrollMagic.min.js"></script>
+   <script src="/plugins/greensock/animation.gsap.min.js"></script>
+   <script src="/plugins/greensock/ScrollToPlugin.min.js"></script>
+   <script src="/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+   <script src="/plugins/easing/easing.js"></script>
+   <script src="/plugins/progressbar/progressbar.min.js"></script>
+   <script src="/plugins/parallax-js-master/parallax.min.js"></script>
+   <script src="/js/custom.js"></script>
+   </body>
+   </html>

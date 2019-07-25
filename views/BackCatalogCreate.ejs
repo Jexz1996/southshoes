@@ -1,0 +1,63 @@
+<%- include('partials/backend/head') %>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Agregar Nuevo Producto
+
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a><i class="fa fa-dashboard"></i> Inicio</a></li>
+                    <li class="active">Panel de Control</li>
+                </ol>
+            </section>
+            <!-- Main content -->
+            <br />
+<div class="container p-4">
+      <div class="row">
+        <div class="col-md-4 offset-md-4">
+          <div class="card">
+            <div class="card-body">
+              <form action="/Backupload" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <input id="modelo" type="text" name="modelo" placeholder="Modelo" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <textarea type="textarea" name="descripcion" placeholder="Descripcion" class="form-control"></textarea>
+                </div> 
+                <div class="form-group">
+                    <input type="number" name="precio" placeholder="Precio" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <input type="number" name="stock" placeholder="Stock" class="form-control"/>
+                </div>
+                <!--
+                <div class="form-group">
+                    <input type="radio" name="genero" value="Masculino" checked="true"> Masculino<br>
+                    <input type="radio" name="genero" value="Femenino"> Femenino<br>
+                </div>   
+                -->        
+                <div class="input-group mb-3">
+                    <div class="custom-file">
+                       
+                        <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Seleccione una Imagen</label>
+                         <input type="file" name="image" class="custom-file-input" id="inputGroupFile02">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success btn-block">
+                       Guardar
+                    </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+            <!-- /.content -->
+        </div>
+          <!-- /.content-wrapper -->
+        <%- include('partials/backend/footer') %>

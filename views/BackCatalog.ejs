@@ -1,0 +1,92 @@
+<%- include('partials/backend/head') %>
+
+    
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Panel de Control
+
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a><i class="fa fa-dashboard"></i> Inicio</a></li>
+                    <li class="active">Panel de Control</li>
+                </ol>
+            </section>
+            <!-- Main content -->
+            <br />
+            <br />
+<div class="box box-info ">
+    <h2>&nbsp;&nbsp;Catálogo de productos</h2>
+    <div class="box-body">
+
+        <div>
+            <a class="btn btn-success" href="/BackCatalogCreate">Ingresar Nuevo Producto</a>
+            <br />
+            <br />
+        </div>
+            
+        
+
+        <table class="table" style="table-layout: fixed; width: 100%">
+
+            <tr>
+                <th>
+                    Modelo
+                </th>
+                <th>
+                    Imagen
+                </th>
+                <th>
+                    Descripción
+                </th>
+                <th>
+                    Precio
+                </th>
+                <th>
+                    Stock
+                </th>
+                <th>
+                    Acciones
+                </th>
+                
+               
+            </tr>
+
+            <% images2.forEach(function(image) { %>
+
+        <tr>
+            <td>
+                <%= image.modelo %>
+            </td>
+            <td>
+                <img src="<%= image.path %>" width="150px" height="100px" alt="" >
+            </td>
+            <td>
+                <%= image.descripcion %>
+            </td>
+            <td>
+                <%= image.precio %>
+            </td>
+            <td>
+                <%= image.stock %>
+            </td>
+           
+            <td>
+                
+                    <a href="/Backedit/<%= image._id %>" class="btn btn-info ">Editar</a>
+                
+            
+               <a href="/BackEdit/<%= image._id %>/delete" class="btn btn-danger ">Eliminar</a>
+            </td>
+        </tr>
+   <% }) %>
+
+        </table>
+    </div>
+</div>
+            <!-- /.content -->
+        </div>
+        <%- include('partials/backend/footer') %>
+      

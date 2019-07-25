@@ -1,0 +1,74 @@
+<%- include('partials/backend/head') %>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1> Panel de Control</h1>
+                <ol class="breadcrumb">
+                    <li><a><i class="fa fa-dashboard"></i> Inicio</a></li>
+                    <li class="active">Panel de Control</li>
+                </ol>
+            </section>
+            <!-- Main content -->
+            <br />
+            <br />
+<div class="box box-info ">
+    <h2>&nbsp;&nbsp;Catálogo de productos</h2>
+    <div class="box-body">
+
+        <div>
+            <a class="btn btn-success" href="/BackCatalogCreate">Ingresar Nuevo Producto</a>
+            <br />
+            <br />
+        </div>
+            
+        <table class="table" style="table-layout: fixed; width: 100%">
+
+            <tr>
+                <th>
+                    Usuario
+                </th>
+                <th>
+                    Estado del producto
+                </th>
+                <th>
+                    Código de compra
+                </th>
+                <th>
+                    Acciones
+                </th>
+                
+               
+            </tr>
+
+            <% ventas.forEach(function(venta) { %>
+                <tr>
+                    <td>
+                        <%= venta.idUsuario %>
+                    </td>
+                    <td>
+                        <%= venta.estado %>
+                    </td>
+                    <td>
+                        <%= venta.idCompra %>
+                    </td>
+                    <td>
+                        <form action="/BackComprasRealizadas/<%= venta._id %>/delete" method="get" style="display: inline;">
+                            <button class="btn btn-danger" type="submit" onclick="return confirm('¿Desea eliminar el registro de la base de datos?')">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+            <% }) %>
+
+
+
+        </table>
+
+    </div>
+</div>
+            <!-- /.content -->
+        </div>
+
+
+<%- include('partials/backend/footer') %>
